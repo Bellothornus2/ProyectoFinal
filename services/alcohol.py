@@ -14,7 +14,7 @@ class Alcohol(Model):
 	class Meta:
 		database = db
 
-def get_last_alcohol_id():
+def get_alcohol_last_id():
 	db.connect()
 	query = Alcohol.select(fn.MAX(Alcohol.id)) ##para obtener SELECT MAX(id) AS LastID FROM Item
 	last_id = query.scalar() ##para tener un registro
