@@ -11,7 +11,7 @@ from services.alcohol import (
 get_alcohol_blueprint = Blueprint("get_alcohol", __name__)
 get_all_alcohol_blueprint = Blueprint("get_all_alcohol", __name__)
 create_alcohol_blueprint = Blueprint("create_alcohol", __name__)
-update_alcohol_blueprint = Blueprint("update_item", __name__)
+update_alcohol_blueprint = Blueprint("update_alcohol", __name__)
 delete_alcohol_blueprint = Blueprint("delete_alcohol", __name__)
 
 @get_alcohol_blueprint.route("/alcohol/<id>",methods=["GET"])
