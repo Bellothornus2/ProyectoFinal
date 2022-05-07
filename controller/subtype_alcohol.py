@@ -26,7 +26,7 @@ def get_all_subtype_alcohol_function():
 	response = jsonify(response)
 	return response
 
-@create_subtype_alcohol_blueprint.route("/alcohol", methods=["POST"])
+@create_subtype_alcohol_blueprint.route("/subtype_alcohol", methods=["POST"])
 def create_subtype_alcohol():
 	data = request.get_json()
 	name = data["name"]
