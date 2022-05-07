@@ -1,0 +1,15 @@
+venv
+env
+__pycache__
+.pytest_cache
+.tox
+.coverage
+.idea
+coverage_html_report
+Ollivanders.sqlite
+Ollivanders.sqlite-journal
+.vscode
+distutils
+coverage_annotation
+arg.py
+guia.txt
