@@ -59,7 +59,7 @@ def get_alcohol_id(alcohol_id):
 			}
 		}
 		db.close()
-	except ValueError:
+	except Alcohol.DoesNotExist:
 		answer = {"error": "the record can't be retrieved"}
 	return answer
 
