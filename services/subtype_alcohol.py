@@ -41,7 +41,7 @@ def get_subtype_alcohol_id(subtype_alcohol_id):
 			}
 		}
 		db.close()
-	except ValueError:
+	except SubTypeAlcohol.DoesNotExist:
 		answer = {"error": "the record can't be retrieved"}
 	return answer
 
@@ -57,17 +57,23 @@ def create_subtype_alcohol(name,type_alcohol_id):
 
 def update_subtype_alcohol(id, name, type_alcohol_id):
 	db.connect()
-	subtype_alcohol = SubTypeAlcohol.get(SubTypeAlcohol.id==id)
-	subtype_alcohol.name = name
-	subtype_alcohol.type_alcohol_id = type_alcohol_id
-	subtype_alcohol.save()
-	db.commit()
+	try:
+		subtype_alcohol = SubTypeAlcohol.get(SubTypeAlcohol.id==id)
+		subtype_alcohol.name = name
+		subtype_alcohol.type_alcohol_id = type_alcohol_id
+		subtype_alcohol.save()
+		db.commit()
+	except SubTypeAlcohol.DoesNotExist:
+		pass
 	db.close()
 
 def delete_subtype_alcohol(id):
 	db.connect()
-	subtype_alcohol = SubTypeAlcohol.get(SubTypeAlcohol.id==id)
-	subtype_alcohol.delete_instance()
+	try:
+		subtype_alcohol = SubTypeAlcohol.get(SubTypeAlcohol.id==id)
+		subtype_alcohol.delete_instance()
+	except SubTypeAlcohol.DoesNotExist:
+		pass
 	db.close()
 
 

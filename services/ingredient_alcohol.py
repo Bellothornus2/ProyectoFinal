@@ -6,8 +6,8 @@ from services.ingredient import Ingredient
 db = SqliteDatabase('ImpetuYam.sqlite')
 
 class IngredientAlcohol(Model):
-	alcohol_code = ForeignKeyField(Alcohol)
-	ingredient_code = ForeignKeyField(Ingredient)
+	alcohol_id = ForeignKeyField(Alcohol)
+	ingredient_id = ForeignKeyField(Ingredient)
 	class Meta:
 		database = db
 
@@ -26,8 +26,8 @@ def get_all_ingredient_alcohol():
 	for item in list_ingredient_alcohol:
 		data["data"].append({
 			"id":item.id,
-			"alcohol_id":item.alcohol_id,
-			"ingredient_id":item.ingredient_id
+			"alcohol_id":item.alcohol_id.id,
+			"ingredient_id":item.ingredient_id.id
 		})
 	db.close()
 	return data
@@ -39,38 +39,47 @@ def get_ingredient_alcohol_id(ingredient_alcohol_id):
 		answer = {
 			"data":{
 				"id":ingredient_alcohol_db.id,
-				"alcohol_id":ingredient_alcohol_db.alcohol_id,
-				"ingredient_id":ingredient_alcohol_db.ingredient_id
+				"alcohol_id":ingredient_alcohol_db.alcohol_id.id,
+				"ingredient_id":ingredient_alcohol_db.ingredient_id.id
 			}
 		}
 		db.close()
-	except ValueError:
+	except IngredientAlcohol.DoesNotExist:
 		answer = {"error": "the record can't be retrieved"}
 	return answer
 
 def create_ingredient_alcohol(alcohol_id,ingredient_id):
 	db.connect()
-	ingredient_alcohol = IngredientAlcohol.create(
-		alcohol_id = alcohol_id,
-		ingredient_id = ingredient_id
-	)
-	ingredient_alcohol.save()
-	db.commit()
+	try:
+		ingredient_alcohol = IngredientAlcohol.create(
+			alcohol_id = alcohol_id,
+			ingredient_id = ingredient_id
+		)
+		ingredient_alcohol.save()
+		db.commit()
+	except:
+		pass
 	db.close()
 
 def update_ingredient_alcohol(id, alcohol_id, ingredient_id):
 	db.connect()
-	ingredient_alcohol = IngredientAlcohol.get(IngredientAlcohol.id==id)
-	ingredient_alcohol.alcohol_id = alcohol_id
-	ingredient_alcohol.ingredient_id = ingredient_id
-	ingredient_alcohol.save()
-	db.commit()
+	try:
+		ingredient_alcohol = IngredientAlcohol.get(IngredientAlcohol.id==id)
+		ingredient_alcohol.alcohol_id = alcohol_id
+		ingredient_alcohol.ingredient_id = ingredient_id
+		ingredient_alcohol.save()
+		db.commit()
+	except IngredientAlcohol.DoesNotExist:
+		pass
 	db.close()
 
 def delete_ingredient_alcohol(id):
 	db.connect()
-	ingredient_alcohol = IngredientAlcohol.get(IngredientAlcohol.id==id)
-	ingredient_alcohol.delete_instance()
+	try:
+		ingredient_alcohol = IngredientAlcohol.get(IngredientAlcohol.id==id)
+		ingredient_alcohol.delete_instance()
+	except IngredientAlcohol.DoesNotExist:
+		pass
 	db.close()
 
 

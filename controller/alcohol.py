@@ -48,8 +48,8 @@ def update_alcohol_function(alcohol_id):
 	alcohol_grade = data["alcohol_grade"]
 	price = data["price"]
 	brand = data["brand"]
-	type_alcohol = data["type_alcohol"]
-	subtype_alcohol = data["subtype_alcohol"]
+	type_alcohol = data["type_alcohol_id"]
+	subtype_alcohol = data["subtype_alcohol_id"]
 	description = data["description"]
 	update_alcohol(alcohol_id,name,alcohol_grade,price,brand,type_alcohol,subtype_alcohol,description)
 	answer = get_alcohol_id(alcohol_id)

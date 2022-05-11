@@ -79,20 +79,26 @@ def create_alcohol(name,alcohol_grade,price,brand,type_alcohol,subtype_alcohol,d
 
 def update_alcohol(id, name,alcohol_grade,price,brand,type_alcohol,subtype_alcohol,description):
 	db.connect()
-	alcohol = Alcohol.get(Alcohol.id==id)
-	alcohol.name = name
-	alcohol.alcohol_grade = alcohol_grade
-	alcohol.price = price
-	alcohol.brand = brand
-	alcohol.type_alcohol_id = type_alcohol
-	alcohol.subtype_alcohol_id = subtype_alcohol
-	alcohol.description = description
-	alcohol.save()
-	db.commit()
+	try:
+		alcohol = Alcohol.get(Alcohol.id==id)
+		alcohol.name = name
+		alcohol.alcohol_grade = alcohol_grade
+		alcohol.price = price
+		alcohol.brand = brand
+		alcohol.type_alcohol_id = type_alcohol
+		alcohol.subtype_alcohol_id = subtype_alcohol
+		alcohol.description = description
+		alcohol.save()
+		db.commit()
+	except Alcohol.DoesNotExist:
+		pass
 	db.close()
 
 def delete_alcohol(id):
 	db.connect()
-	alcohol = Alcohol.get(Alcohol.id==id)
-	alcohol.delete_instance()
+	try:
+		alcohol = Alcohol.get(Alcohol.id==id)
+		alcohol.delete_instance()
+	except Alcohol.DoesNotExist:
+		pass
 	db.close()

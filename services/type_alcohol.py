@@ -1,3 +1,4 @@
+from typing import Type
 from peewee import SqliteDatabase,CharField,Model,fn
 
 db = SqliteDatabase('ImpetuYam.sqlite')
@@ -38,7 +39,7 @@ def get_type_alcohol_id(type_alcohol_id):
 			}
 		}
 		db.close()
-	except ValueError:
+	except TypeAlcohol.DoesNotExist:
 		answer = {"error": "the record can't be retrieved"}
 	return answer
 
@@ -51,16 +52,22 @@ def create_type_alcohol(name):
 
 def update_type_alcohol(id, name):
 	db.connect()
-	type_alcohol = TypeAlcohol.get(TypeAlcohol.id==id)
-	type_alcohol.name = name
-	type_alcohol.save()
-	db.commit()
+	try:
+		type_alcohol = TypeAlcohol.get(TypeAlcohol.id==id)
+		type_alcohol.name = name
+		type_alcohol.save()
+		db.commit()
+	except TypeAlcohol.DoesNotExist:
+		pass
 	db.close()
 
 def delete_type_alcohol(id):
 	db.connect()
-	type_alcohol = TypeAlcohol.get(TypeAlcohol.id==id)
-	type_alcohol.delete_instance()
+	try:
+		type_alcohol = TypeAlcohol.get(TypeAlcohol.id==id)
+		type_alcohol.delete_instance()
+	except TypeAlcohol.DoesNotExist:
+		pass
 	db.close()
 
 

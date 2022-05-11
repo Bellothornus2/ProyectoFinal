@@ -38,7 +38,7 @@ def get_ingredient_id(ingredient_id):
 			}
 		}
 		db.close()
-	except ValueError:
+	except Ingredient.DoesNotExist:
 		answer = {"error": "the record can't be retrieved"}
 	return answer
 
@@ -51,16 +51,22 @@ def create_ingredient(name):
 
 def update_ingredient(id, name):
 	db.connect()
-	ingredient = Ingredient.get(Ingredient.id==id)
-	ingredient.name = name
-	ingredient.save()
-	db.commit()
+	try:
+		ingredient = Ingredient.get(Ingredient.id==id)
+		ingredient.name = name
+		ingredient.save()
+		db.commit()
+	except Ingredient.DoesNotExist:
+		pass
 	db.close()
 
 def delete_ingredient(id):
 	db.connect()
-	ingredient = Ingredient.get(Ingredient.id==id)
-	ingredient.delete_instance()
+	try:
+		ingredient = Ingredient.get(Ingredient.id==id)
+		ingredient.delete_instance()
+	except Ingredient.DoesNotExist:
+		pass
 	db.close()
 
 
