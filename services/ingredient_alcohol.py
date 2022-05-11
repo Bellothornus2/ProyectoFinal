@@ -1,10 +1,13 @@
 from peewee import SqliteDatabase,ForeignKeyField,Model,fn
 
+from services.alcohol import Alcohol
+from services.ingredient import Ingredient
+
 db = SqliteDatabase('ImpetuYam.sqlite')
 
 class IngredientAlcohol(Model):
-	alcohol_code = ForeignKeyField()
-	ingredient_code = ForeignKeyField()
+	alcohol_code = ForeignKeyField(Alcohol)
+	ingredient_code = ForeignKeyField(Ingredient)
 	class Meta:
 		database = db
 

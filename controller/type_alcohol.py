@@ -26,8 +26,8 @@ def get_all_type_alcohol_function():
 	response = jsonify(response)
 	return response
 
-@create_type_alcohol_blueprint.route("/alcohol", methods=["POST"])
-def create_type_alcohol():
+@create_type_alcohol_blueprint.route("/type_alcohol", methods=["POST"])
+def create_type_alcohol_function():
 	data = request.get_json()
 	name = data["name"]
 	create_type_alcohol(name)
@@ -36,7 +36,7 @@ def create_type_alcohol():
 	return answer
 
 @update_type_alcohol_blueprint.route("/type_alcohol/<type_alcohol_id>", methods=["PUT"])
-def update_type_alcohol(type_alcohol_id):
+def update_type_alcohol_function(type_alcohol_id):
 	data = request.get_json()
 	name = data["name"]
 	update_type_alcohol(type_alcohol_id,name)

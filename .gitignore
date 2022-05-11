@@ -1,4 +1,5 @@
 venv
+venv2
 env
 __pycache__
 .pytest_cache
@@ -6,8 +7,8 @@ __pycache__
 .coverage
 .idea
 coverage_html_report
-Ollivanders.sqlite
-Ollivanders.sqlite-journal
+ImpetuYam.sqlite
+ImpetuYam.sqlite-journal
 .vscode
 distutils
 coverage_annotation

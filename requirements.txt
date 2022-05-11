@@ -32,3 +32,5 @@ virtualenv==20.4.3
 Werkzeug==1.0.1
 zipp==3.4.1
 simple-orm==0.0.1
+flask-cors==3.0.10
+peewee==3.14.10

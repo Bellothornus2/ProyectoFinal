@@ -1,15 +1,17 @@
 #SELECT MAX(ID) AS LastID FROM Persons
-from peewee import SqliteDatabase,CharField,TextField,ForeignKeyField,DecimalField,Model,IntegerField,fn
+from peewee import SqliteDatabase,CharField,TextField,ForeignKeyField,FloatField,Model,IntegerField,fn
+from services.type_alcohol import TypeAlcohol
+from services.subtype_alcohol import SubTypeAlcohol
 
 db = SqliteDatabase('ImpetuYam.sqlite')
 
 class Alcohol(Model):
 	name = CharField()
-	price = DecimalField()
-	alcohol_grade = IntegerField()
+	price = FloatField()
+	alcohol_grade = FloatField()
 	brand = CharField()
-	type_alcohol = IntegerField()
-	subtype_alcohol = IntegerField()
+	type_alcohol_id = ForeignKeyField(TypeAlcohol)
+	subtype_alcohol_id = ForeignKeyField(SubTypeAlcohol)
 	description = TextField()
 	class Meta:
 		database = db
@@ -33,8 +35,8 @@ def get_all_alcohol():
 			"price":item.price,
 			"alcohol_grade":item.alcohol_grade,
 			"brand":item.brand,
-			"type_alcohol":item.type_alcohol,
-			"subtype_alcohol":item.subtype_alcohol,
+			"type_alcohol_id":item.type_alcohol_id.id,
+			"subtype_alcohol_id":item.subtype_alcohol_id.id,
 			"description":item.description
 		})
 	db.close()
@@ -51,8 +53,8 @@ def get_alcohol_id(alcohol_id):
 				"price":alcohol_db.price,
 				"alcohol_grade":alcohol_db.alcohol_grade,
 				"brand":alcohol_db.brand,
-				"type_alcohol":alcohol_db.type_alcohol,
-				"subtype_alcohol":alcohol_db.subtype_alcohol,
+				"type_alcohol_id":alcohol_db.type_alcohol_id.id,
+				"subtype_alcohol_id":alcohol_db.subtype_alcohol_id.id,
 				"description":alcohol_db.description
 			}
 		}
@@ -68,8 +70,8 @@ def create_alcohol(name,alcohol_grade,price,brand,type_alcohol,subtype_alcohol,d
 		alcohol_grade=alcohol_grade,
 		price=price,
 		brand=brand,
-		type_alcohol=type_alcohol,
-		subtype_alcohol=subtype_alcohol,
+		type_alcohol_id=type_alcohol,
+		subtype_alcohol_id=subtype_alcohol,
 		description=description)
 	alcohol.save()
 	db.commit()
@@ -82,8 +84,8 @@ def update_alcohol(id, name,alcohol_grade,price,brand,type_alcohol,subtype_alcoh
 	alcohol.alcohol_grade = alcohol_grade
 	alcohol.price = price
 	alcohol.brand = brand
-	alcohol.type_alcohol = type_alcohol
-	alcohol.subtype_alcohol = subtype_alcohol
+	alcohol.type_alcohol_id = type_alcohol
+	alcohol.subtype_alcohol_id = subtype_alcohol
 	alcohol.description = description
 	alcohol.save()
 	db.commit()

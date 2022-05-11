@@ -27,22 +27,22 @@ def get_all_alcohol_function():
 	return response
 
 @create_alcohol_blueprint.route("/alcohol", methods=["POST"])
-def create_alcohol():
+def create_alcohol_function():
 	data = request.get_json()
 	name = data["name"]
 	alcohol_grade = data["alcohol_grade"]
 	price = data["price"]
 	brand = data["brand"]
-	type_alcohol = data["type_alcohol"]
-	subtype_alcohol = data["subtype_alcohol"]
+	type_alcohol = data["type_alcohol_id"]
+	subtype_alcohol = data["subtype_alcohol_id"]
 	description = data["description"]
-	create_alcohol(name, int(alcohol_grade), float(price), brand, type_alcohol, subtype_alcohol, description)
+	create_alcohol(name, float(alcohol_grade), float(price), brand, type_alcohol, subtype_alcohol, description)
 	last_id = get_alcohol_last_id()
 	answer = get_alcohol_id(last_id)
 	return answer
 
 @update_alcohol_blueprint.route("/alcohol/<alcohol_id>", methods=["PUT"])
-def update_alcohol(alcohol_id):
+def update_alcohol_function(alcohol_id):
 	data = request.get_json()
 	name = data["name"]
 	alcohol_grade = data["alcohol_grade"]

@@ -1,0 +1,8 @@
+from routes.root import app
+from controller import ingredient
+
+app.register_blueprint(ingredient.get_ingredient_blueprint)
+app.register_blueprint(ingredient.get_all_ingredient_blueprint)
+app.register_blueprint(ingredient.create_ingredient_blueprint)
+app.register_blueprint(ingredient.delete_ingredient_blueprint)
+app.register_blueprint(ingredient.update_ingredient_blueprint)

@@ -27,7 +27,7 @@ def get_all_ingredient_alcohol_function():
 	return response
 
 @create_ingredient_alcohol_blueprint.route("/ingredient_alcohol", methods=["POST"])
-def create_ingredient_alcohol():
+def create_ingredient_alcohol_function():
 	data = request.get_json()
 	alcohol_id = data["alcohol_id"]
 	type_alcohol_id = data["ingredient_id"]
@@ -37,7 +37,7 @@ def create_ingredient_alcohol():
 	return answer
 
 @update_ingredient_alcohol_blueprint.route("/ingredient_alcohol/<ingredient_alcohol_id>", methods=["PUT"])
-def update_ingredient_alcohol(ingredient_alcohol_id):
+def update_ingredient_alcohol_function(ingredient_alcohol_id):
 	data = request.get_json()
 	alcohol_id = data["alcohol_id"]
 	type_alcohol_id = data["ingredient_id"]

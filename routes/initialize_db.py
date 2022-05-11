@@ -1,0 +1,5 @@
+from routes.root import app
+from controller import initialize_db
+
+app.register_blueprint(initialize_db.create_tables_blueprint)
+app.register_blueprint(initialize_db.initialize_items_blueprint)

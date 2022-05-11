@@ -1,8 +1,13 @@
-from orm import Database
-from repository.objects_temp import Item
-
-
+from ast import In
+from peewee import SqliteDatabase
+from services.alcohol import Alcohol
+from services.ingredient import Ingredient
+from services.ingredient_alcohol import IngredientAlcohol
+from services.subtype_alcohol import SubTypeAlcohol
+from services.type_alcohol import TypeAlcohol
 def initialize_db():
+	pass
+	'''
     # enlazamos el modelo "item" a la base de datos "Ollivanders.sqlite"
     db = Database("Ollivanders.sqlite")
     Item.db = db
@@ -28,3 +33,7 @@ def initialize_db():
         ["Dexterity Vest +5", 1, 45],
         ["Sulfuras", 3, 99], 
     """
+	'''
+def create_tables():
+	db = SqliteDatabase('ImpetuYam.sqlite')
+	db.create_tables([Alcohol,Ingredient,IngredientAlcohol,SubTypeAlcohol,TypeAlcohol])

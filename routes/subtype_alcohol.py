@@ -1,0 +1,8 @@
+from routes.root import app
+from controller import subtype_alcohol
+
+app.register_blueprint(subtype_alcohol.get_subtype_alcohol_blueprint)
+app.register_blueprint(subtype_alcohol.get_all_subtype_alcohol_blueprint)
+app.register_blueprint(subtype_alcohol.create_subtype_alcohol_blueprint)
+app.register_blueprint(subtype_alcohol.delete_subtype_alcohol_blueprint)
+app.register_blueprint(subtype_alcohol.update_subtype_alcohol_blueprint)

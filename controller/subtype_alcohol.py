@@ -27,7 +27,7 @@ def get_all_subtype_alcohol_function():
 	return response
 
 @create_subtype_alcohol_blueprint.route("/subtype_alcohol", methods=["POST"])
-def create_subtype_alcohol():
+def create_subtype_alcohol_function():
 	data = request.get_json()
 	name = data["name"]
 	type_alcohol_id = data["type_alcohol_id"]
@@ -37,7 +37,7 @@ def create_subtype_alcohol():
 	return answer
 
 @update_subtype_alcohol_blueprint.route("/subtype_alcohol/<subtype_alcohol_id>", methods=["PUT"])
-def update_subtype_alcohol(subtype_alcohol_id):
+def update_subtype_alcohol_function(subtype_alcohol_id):
 	data = request.get_json()
 	name = data["name"]
 	type_alcohol_id = data["type_alcohol_id"]

@@ -27,7 +27,7 @@ def get_all_ingredient_function():
 	return response
 
 @create_ingredient_blueprint.route("/ingredient", methods=["POST"])
-def create_ingredient():
+def create_ingredient_function():
 	data = request.get_json()
 	name = data["name"]
 	create_ingredient(name)
@@ -36,7 +36,7 @@ def create_ingredient():
 	return answer
 
 @update_ingredient_blueprint.route("/ingredient/<ingredient_id>", methods=["PUT"])
-def update_ingredient(ingredient_id):
+def update_ingredient_function(ingredient_id):
 	data = request.get_json()
 	name = data["name"]
 	update_ingredient(ingredient_id,name)
