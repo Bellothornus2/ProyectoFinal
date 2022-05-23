@@ -6,6 +6,7 @@ from services.ingredient_alcohol import IngredientAlcohol
 from services.subtype_alcohol import SubTypeAlcohol
 from services.type_alcohol import TypeAlcohol
 from services.user import User
+from services.address import Address
 def initialize_db():
 	pass
 	'''
@@ -38,4 +39,5 @@ def initialize_db():
 def create_tables():
 	db = SqliteDatabase('ImpetuYam.sqlite')
 	#db.create_tables([Alcohol,Ingredient,IngredientAlcohol,SubTypeAlcohol,TypeAlcohol])
-	db.create_tables([User])
+	#db.create_tables([User])
+	db.create_tables([Address])
