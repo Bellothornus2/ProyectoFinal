@@ -1,8 +1,5 @@
-from tokenize import String
 from peewee import SqliteDatabase,ForeignKeyField,Model,CharField,fn
 
-#from services.alcohol import Alcohol
-#from services.ingredient import Ingredient
 from services.user import User
 
 db = SqliteDatabase('ImpetuYam.sqlite')
