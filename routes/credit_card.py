@@ -1,0 +1,8 @@
+from routes.root import app
+from controller import credit_card
+
+app.register_blueprint(credit_card.get_credit_card_blueprint)
+app.register_blueprint(credit_card.get_all_credit_card_blueprint)
+app.register_blueprint(credit_card.create_credit_card_blueprint)
+app.register_blueprint(credit_card.delete_credit_card_blueprint)
+app.register_blueprint(credit_card.update_credit_card_blueprint)
