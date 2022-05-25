@@ -1,4 +1,4 @@
-from peewee import SqliteDatabase,ForeignKeyField,Model,FloatField,fn
+from peewee import SqliteDatabase,ForeignKeyField,Model,FloatField,CharField,fn
 
 from services.credit_card import CreditCard
 from services.user import User
@@ -12,6 +12,7 @@ class Order(Model):
 	address_bill = ForeignKeyField(Address)
 	credit_card = ForeignKeyField(CreditCard)
 	total_amount = FloatField()
+	date_str = CharField()
 	user_id = ForeignKeyField(User)
 	class Meta:
 		database = db
@@ -35,6 +36,7 @@ def get_all_order():
 			"address_send":item.address_send_id.id,
 			"address_bill":item.address_bill_id.id,
 			"credit_card":item.credit_card_id.id,
+			"date_srt":item.date_str,
 			"total_amount":item.total_amount
 		})
 	db.close()
@@ -51,6 +53,7 @@ def get_order_id(order_id):
 				"address_send":order_db.address_send_id.id,
 				"address_bill":order_db.address_bill_id.id,
 				"credit_card":order_db.credit_card_id.id,
+				"date_srt":order_db.date_str,
 				"total_amount":order_db.total_amount
 			}
 		}
@@ -59,7 +62,7 @@ def get_order_id(order_id):
 		answer = {"error": "the record can't be retrieved"}
 	return answer
 
-def create_order(user_id,address_send,address_bill,credit_card,total_amount):
+def create_order(user_id,address_send,address_bill,credit_card,total_amount,date_str):
 	db.connect()
 	try:
 		order = Order.create(
@@ -67,7 +70,8 @@ def create_order(user_id,address_send,address_bill,credit_card,total_amount):
 			address_send = address_send,
 			address_bill = address_bill,
 			credit_card = credit_card,
-			total_amount = total_amount
+			total_amount = total_amount,
+			date_str = date_str
 		)
 		order.save()
 		db.commit()
@@ -75,7 +79,7 @@ def create_order(user_id,address_send,address_bill,credit_card,total_amount):
 		pass
 	db.close()
 
-def update_order(id, user_id,address_send,address_bill,credit_card,total_amount):
+def update_order(id, user_id,address_send,address_bill,credit_card,total_amount,date_str):
 	db.connect()
 	try:
 		order = Order.get(Order.id==id)
@@ -84,6 +88,7 @@ def update_order(id, user_id,address_send,address_bill,credit_card,total_amount)
 		order.address_bill = address_bill
 		order.credit_card = credit_card
 		order.total_amount = total_amount
+		order.date_str = date_str
 		order.save()
 		db.commit()
 	except Order.DoesNotExist:

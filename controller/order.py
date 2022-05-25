@@ -34,7 +34,8 @@ def create_order_function():
 	address_bill = data["address_bill"]
 	credit_card = data["credit_card"]
 	total_amount = data["total_amount"]
-	create_order(user_id,address_send,address_bill,credit_card,total_amount)
+	date_str = data["date_str"]
+	create_order(user_id,address_send,address_bill,credit_card,total_amount,date_str)
 	last_id = get_order_last_id()
 	answer = get_order_id(last_id)
 	return answer
@@ -47,7 +48,8 @@ def update_order_function(order_id):
 	address_bill = data["address_bill"]
 	credit_card = data["credit_card"]
 	total_amount = data["total_amount"]
-	update_order(order_id,user_id,address_send,address_bill,credit_card,total_amount)
+	date_str = data["date_str"]
+	update_order(order_id,user_id,address_send,address_bill,credit_card,total_amount,date_str)
 	answer = get_order_id(order_id)
 	return answer
 
