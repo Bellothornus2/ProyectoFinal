@@ -1,6 +1,6 @@
 from peewee import SqliteDatabase,ForeignKeyField,Model,FloatField,CharField,fn
 
-from services.review import Order
+from services.order import Order
 from services.alcohol import Alcohol
 from services.user import User
 

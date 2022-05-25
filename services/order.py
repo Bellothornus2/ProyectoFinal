@@ -1,3 +1,5 @@
+from cmath import e
+from msilib.schema import Error
 from peewee import SqliteDatabase,ForeignKeyField,Model,FloatField,CharField,fn
 
 from services.credit_card import CreditCard
@@ -8,9 +10,9 @@ from services.address import Address
 db = SqliteDatabase('ImpetuYam.sqlite')
 
 class Order(Model):
-	address_send = ForeignKeyField(Address)
-	address_bill = ForeignKeyField(Address)
-	credit_card = ForeignKeyField(CreditCard)
+	address_send_id = ForeignKeyField(Address)
+	address_bill_id = ForeignKeyField(Address)
+	credit_card_id = ForeignKeyField(CreditCard)
 	total_amount = FloatField()
 	date_str = CharField()
 	user_id = ForeignKeyField(User)
@@ -64,19 +66,16 @@ def get_order_id(order_id):
 
 def create_order(user_id,address_send,address_bill,credit_card,total_amount,date_str):
 	db.connect()
-	try:
-		order = Order.create(
-			user_id = user_id,
-			address_send = address_send,
-			address_bill = address_bill,
-			credit_card = credit_card,
-			total_amount = total_amount,
-			date_str = date_str
-		)
-		order.save()
-		db.commit()
-	except:
-		pass
+	order = Order.create(
+		user_id = user_id,
+		address_send_id = address_send,
+		address_bill_id = address_bill,
+		credit_card_id = credit_card,
+		total_amount = total_amount,
+		date_str = date_str
+	)
+	order.save()
+	db.commit()
 	db.close()
 
 def update_order(id, user_id,address_send,address_bill,credit_card,total_amount,date_str):
@@ -84,9 +83,9 @@ def update_order(id, user_id,address_send,address_bill,credit_card,total_amount,
 	try:
 		order = Order.get(Order.id==id)
 		order.user_id = user_id
-		order.address_send = address_send
-		order.address_bill = address_bill
-		order.credit_card = credit_card
+		order.address_send_id = address_send
+		order.address_bill_id = address_bill
+		order.credit_card_id = credit_card
 		order.total_amount = total_amount
 		order.date_str = date_str
 		order.save()
