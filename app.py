@@ -2,7 +2,7 @@ import sys
 from flask_cors import CORS 
 from controller import initialize_db
 from routes.root import app
-from routes import alcohol,ingredient,initialize_db,type_alcohol,subtype_alcohol,ingredient_alcohol,user,address,credit_card
+from routes import alcohol,ingredient,initialize_db,type_alcohol,subtype_alcohol,ingredient_alcohol,user,address,credit_card,order,order_line,review
 
 CORS(app)
 try:
