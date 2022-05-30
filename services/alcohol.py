@@ -1,5 +1,5 @@
 #SELECT MAX(ID) AS LastID FROM Persons
-from peewee import SqliteDatabase,CharField,TextField,ForeignKeyField,FloatField,Model,IntegerField,fn
+from peewee import SqliteDatabase,CharField,TextField,ForeignKeyField,FloatField,Model,fn
 from services.type_alcohol import TypeAlcohol
 from services.subtype_alcohol import SubTypeAlcohol
 

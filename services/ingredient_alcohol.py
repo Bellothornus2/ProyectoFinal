@@ -48,6 +48,32 @@ def get_ingredient_alcohol_id(ingredient_alcohol_id):
 		answer = {"error": "the record can't be retrieved"}
 	return answer
 
+def get_alcohol_by_ingredient(ingredient_id):
+	try:
+		db.connect()
+		ingredient_alcohol_db = IngredientAlcohol.select().where(IngredientAlcohol.ingredient_id == ingredient_id)
+		data = {}
+		data["data"] = []
+		list_alcohol_id = []
+		for item in ingredient_alcohol_db:
+			list_alcohol_id.append(item.alcohol_id.id)
+		alcohol_db = Alcohol.select().where(Alcohol.id.in_(list_alcohol_id))
+		for item in alcohol_db:
+			data["data"].append({
+				"id":item.id,
+				"name":item.name,
+				"price":item.price,
+				"alcohol_grade":item.alcohol_grade,
+				"brand":item.brand,
+				"type_alcohol_id":item.type_alcohol_id.id,
+				"subtype_alcohol_id":item.subtype_alcohol_id.id,
+				"description":item.description
+			})
+		db.close()
+	except:
+		data = {"error":"something went wrong"}
+	return data
+
 def create_ingredient_alcohol(alcohol_id,ingredient_id):
 	db.connect()
 	try:

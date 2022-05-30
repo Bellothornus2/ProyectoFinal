@@ -1,8 +1,11 @@
 from routes.root import app
 from controller import ingredient_alcohol
+from services.ingredient_alcohol import get_alcohol_by_ingredient
 
 app.register_blueprint(ingredient_alcohol.get_ingredient_alcohol_blueprint)
 app.register_blueprint(ingredient_alcohol.get_all_ingredient_alcohol_blueprint)
 app.register_blueprint(ingredient_alcohol.create_ingredient_alcohol_blueprint)
 app.register_blueprint(ingredient_alcohol.delete_ingredient_alcohol_blueprint)
 app.register_blueprint(ingredient_alcohol.update_ingredient_alcohol_blueprint)
+app.register_blueprint(ingredient_alcohol.create_ingredient_alcohol_blueprint)
+app.register_blueprint(ingredient_alcohol.get_alcohol_by_ingredient_blueprint)

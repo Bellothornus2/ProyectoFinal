@@ -2,6 +2,7 @@ from flask import jsonify, Blueprint, request
 from services.ingredient_alcohol import (
 	get_ingredient_alcohol_id,
 	get_all_ingredient_alcohol,
+	get_alcohol_by_ingredient,
 	get_ingredient_alcohol_last_id,
 	create_ingredient_alcohol,
 	update_ingredient_alcohol,
@@ -13,6 +14,7 @@ get_all_ingredient_alcohol_blueprint = Blueprint("get_all_ingredient_alcohol", _
 create_ingredient_alcohol_blueprint = Blueprint("create_ingredient_alcohol", __name__)
 update_ingredient_alcohol_blueprint = Blueprint("update_ingredient_alcohol", __name__)
 delete_ingredient_alcohol_blueprint = Blueprint("delete_ingredient_alcohol", __name__)
+get_alcohol_by_ingredient_blueprint = Blueprint("get_alcohol_by_ingredient_blueprint",__name__)
 
 @get_ingredient_alcohol_blueprint.route("/ingredient_alcohol/<id>",methods=["GET"])
 def get_ingredient_alcohol_function(id):
@@ -23,6 +25,12 @@ def get_ingredient_alcohol_function(id):
 @get_all_ingredient_alcohol_blueprint.route("/ingredient_alcohol",methods=["GET"])
 def get_all_ingredient_alcohol_function():
 	response = get_all_ingredient_alcohol()
+	response = jsonify(response)
+	return response
+
+@get_alcohol_by_ingredient_blueprint.route("/alcohol/by/ingredient/<id>",methods=["GET"])
+def get_alcohol_by_ingredient_function(id):
+	response = get_alcohol_by_ingredient(id)
 	response = jsonify(response)
 	return response
 

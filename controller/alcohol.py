@@ -14,6 +14,7 @@ create_alcohol_blueprint = Blueprint("create_alcohol", __name__)
 update_alcohol_blueprint = Blueprint("update_alcohol", __name__)
 delete_alcohol_blueprint = Blueprint("delete_alcohol", __name__)
 
+
 @get_alcohol_blueprint.route("/alcohol/<id>",methods=["GET"])
 def get_alcohol_function(id):
 	response = get_alcohol_id(id)
