@@ -2,13 +2,15 @@
 FROM python:3
 
 RUN apt-get update -y && \
-    apt-get install python-pip python-dev -y
-
-COPY ./requirements.txt /usr/src/app/requirements.txt
+    apt-get install python3-pip python-dev -y
 
 WORKDIR /usr/src/app
 
-RUN useradd --shell /bin/bash --no-log-init -password 1234 --home-dir /usr/src/app flaskuser 
+COPY ./requirements.txt ./requirements.txt
+
+
+
+RUN useradd --shell /bin/bash --no-log-init --password 1234 --home-dir /usr/src/app flaskuser 
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 

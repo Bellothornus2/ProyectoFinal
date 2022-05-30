@@ -1,5 +1,3 @@
-from cmath import e
-from msilib.schema import Error
 from peewee import SqliteDatabase,ForeignKeyField,Model,FloatField,CharField,fn
 
 from services.credit_card import CreditCard

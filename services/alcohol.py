@@ -85,6 +85,28 @@ def get_alcohol_by_type_alcohol(type_alcohol_id):
 		data["error"] = {"error":"the records can't be retrieved"}
 	return data
 
+def get_alcohol_by_subtype_alcohol(subtype_alcohol_id):
+	try:
+		db.connect()
+		alcohol_db = Alcohol.select().where(Alcohol.subtype_alcohol_id == subtype_alcohol_id)
+		data = {}
+		data["data"] = []
+		for item in alcohol_db:
+			data["data"].append({
+				"id":item.id,
+				"name":item.name,
+				"price":item.price,
+				"alcohol_grade":item.alcohol_grade,
+				"brand":item.brand,
+				"type_alcohol_id":item.type_alcohol_id.id,
+				"subtype_alcohol_id":item.subtype_alcohol_id.id,
+				"description":item.description
+			})
+		db.close()
+	except Alcohol.DoesNotExist:
+		data["error"] = {"error":"the records can't be retrieved"}
+	return data
+
 def create_alcohol(name,alcohol_grade,price,brand,type_alcohol,subtype_alcohol,description):
 	db.connect()
 	alcohol = Alcohol.create(
