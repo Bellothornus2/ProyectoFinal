@@ -1,0 +1,20 @@
+{
+	"create":{
+		"name":"Cerveza Generica 25",
+		"alcohol_grade": 2.5,
+		"price": 1.80,
+		"brand": "Cosas",
+		"type_alcohol_id":1,
+		"subtype_alcohol_id":1,
+		"description":"Prueba de Creacion de Cerveza Pale Ale"
+	},
+	"update":{
+		"name":"Cerveza Generica 56",
+		"alcohol_grade": 3,
+		"price": 1.90,
+		"brand": "updated",
+		"type_alcohol_id":1,
+		"subtype_alcohol_id":1,
+		"description":"Prueba de Actualizacion de Cerveza Pale Ale"
+	}
+}
