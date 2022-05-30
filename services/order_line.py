@@ -36,7 +36,7 @@ def get_all_order_line():
 			"price":item.price,
 			"discount":item.discount,
 			"total":item.total,
-			"order_id":item.order_id
+			"order_id":item.order_id.id
 		})
 	db.close()
 	return data
@@ -53,7 +53,7 @@ def get_order_line_id(order_line_id):
 				"price":order_line_db.price,
 				"discount":order_line_db.discount,
 				"total":order_line_db.total,
-				"order_id":order_line_db.order_id
+				"order_id":order_line_db.order_id.id
 			}
 		}
 		db.close()
