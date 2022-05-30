@@ -3,6 +3,7 @@ from services.alcohol import (
 	get_alcohol_id,
 	get_all_alcohol,
 	get_alcohol_last_id,
+	get_alcohol_by_type_alcohol,
 	create_alcohol,
 	update_alcohol,
 	delete_alcohol
@@ -10,6 +11,7 @@ from services.alcohol import (
 
 get_alcohol_blueprint = Blueprint("get_alcohol", __name__)
 get_all_alcohol_blueprint = Blueprint("get_all_alcohol", __name__)
+get_alcohol_by_type_alcohol_blueprint = Blueprint("get_alcohol_by_type_alcohol",__name__)
 create_alcohol_blueprint = Blueprint("create_alcohol", __name__)
 update_alcohol_blueprint = Blueprint("update_alcohol", __name__)
 delete_alcohol_blueprint = Blueprint("delete_alcohol", __name__)
@@ -24,6 +26,12 @@ def get_alcohol_function(id):
 @get_all_alcohol_blueprint.route("/alcohol",methods=["GET"])
 def get_all_alcohol_function():
 	response = get_all_alcohol()
+	response = jsonify(response)
+	return response
+
+@get_alcohol_by_type_alcohol_blueprint.route("/alcohol/by/type_alcohol/<type_alcohol_id>",methods=["GET"])
+def get_all_alcohol_function(type_alcohol_id):
+	response = get_alcohol_by_type_alcohol(type_alcohol_id)
 	response = jsonify(response)
 	return response
 
