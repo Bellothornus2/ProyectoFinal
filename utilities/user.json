@@ -1,0 +1,26 @@
+{
+	"create":{
+		"name":"Damian",
+		"surname": "Ivanov Kotchev",
+		"age": 21,
+		"dni": "X8407044S",
+		"username":"bellothornus",
+		"password":"1234",
+		"sex": "Male",
+		"phone_number":"83779231",
+		"email": "bellothornus@gmail.com",
+		"verified_user":0
+	},
+	"update":{
+		"name":"Damian Actualizado",
+		"surname": "Ivanov Kotchev",
+		"age": 21,
+		"dni": "X8407044S",
+		"username":"bellothornus",
+		"password":"1234",
+		"sex": "Male",
+		"phone_number":"83779231",
+		"email": "bellothornus@gmail.com",
+		"verified_user":0
+	}
+}
