@@ -38,6 +38,18 @@ def test_alcohol_last_id():
 	last_alcohol_id = json.loads(last_alcohol.data)["data"]["id"]
 	assert last_alcohol_id == last_id
 
+@pytest.mark.put_alcohol
+def test_put_alcohol():
+	client_api = app.test_client()
+	alcohol_file = open("./utilities/alcohol.json")
+	alcohol_data = json.load(alcohol_file)
+	post_response = client_api.post("/alcohol",json=alcohol_data["create"])
+	alcohol_post_id = json.loads(post_response.data)["data"]["id"]
+	put_response = client_api.put("/alcohol/%s" % (alcohol_post_id), json=alcohol_data["update"])
+	alcohol_updated = client_api.get("/alcohol/%s" % (alcohol_post_id))
+	assert put_response.data == alcohol_updated.data
+	#test.delete("/alcohol", json={"name": "hola que ase", "sell_in": 80, "quality": 80})
+
 @pytest.mark.delete_alcohol
 def test_delete_alcohol():
 	client_api = app.test_client()
