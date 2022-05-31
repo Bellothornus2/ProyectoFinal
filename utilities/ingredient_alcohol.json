@@ -1,0 +1,10 @@
+{
+	"create":{
+		"alcohol_id":1,
+		"ingredient_id":2
+	},
+	"update":{
+		"alcohol_id":1,
+		"ingredient_id":1
+	}
+}
