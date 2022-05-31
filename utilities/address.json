@@ -1,0 +1,22 @@
+{
+	"create":{
+		"street":"Calle Arxiduc",
+		"street_number":"43",
+		"floor":"4",
+		"door":"1A",
+		"zip_code":"07120",
+		"other_data":"La direccione es clara y sin perdida",
+		"type_address":"Send",
+		"user_id":4
+	},
+	"update":{
+		"street":"Calle Arxiduc Actualizado",
+		"street_number":"43",
+		"floor":"4",
+		"door":"1A",
+		"zip_code":"07120",
+		"other_data":"La direccione es clara y sin perdida",
+		"type_address":"Send",
+		"user_id":4
+	}
+}
