@@ -1,0 +1,10 @@
+{
+	"create":{
+		"type_alcohol_id":1,
+		"name": "Ales Belgas"
+	},
+	"update":{
+		"name":"prueba sobre actualizacion",
+		"type_alcohol_id":1
+	}
+}
