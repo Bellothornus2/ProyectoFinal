@@ -1,0 +1,18 @@
+{
+	"create":{
+		"user_id":4,
+		"address_send":1,
+		"address_bill":1,
+		"credit_card":1,
+		"total_amount": 1000.0,
+		"date_str":"25/05/2022"
+	},
+	"update":{
+		"user_id":4,
+		"address_send":1,
+		"address_bill":1,
+		"credit_card":1,
+		"total_amount": 9999.0,
+		"date_str":"25/05/2022"
+	}
+}
