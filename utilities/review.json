@@ -1,0 +1,18 @@
+{
+	"create":{
+		"user_id": 4,
+		"message": "Este alcohol me parece una mierda, tenía otras expectativas, no la volveré a comprar",
+		"user_rating": 1.0,
+		"alcohol_id": 1, 
+		"order_id": 1,
+		"user_sentiment": "No"
+	},
+	"update":{
+		"user_id": 4,
+		"message": "Este alcohol me parece una mierda, tenía otras expectativas, no la volveré a comprar, Actualizado",
+		"user_rating": 1.0,
+		"alcohol_id": 1, 
+		"order_id": 1,
+		"user_sentiment": "No"
+	}
+}
