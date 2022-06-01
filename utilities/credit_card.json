@@ -1,0 +1,16 @@
+{
+	"create":{
+		"card_number":"8888666633332222",
+		"expire_date":"02/24",
+		"cvv":"012",
+		"owner_name":"Damian Ivanov Kotchev",
+		"user_id":4
+	},
+	"update":{
+		"card_number":"8888666633332222",
+		"expire_date":"02/24",
+		"cvv":"012",
+		"owner_name":"Damian Actualizado",
+		"user_id":4
+	}
+}
