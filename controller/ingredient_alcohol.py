@@ -28,7 +28,7 @@ def get_all_ingredient_alcohol_function():
 	response = jsonify(response)
 	return response
 
-@get_alcohol_by_ingredient_blueprint.route("/alcohol/by/ingredient/<id>",methods=["GET"])
+@get_alcohol_by_ingredient_blueprint.route("/type_alcohol/by/ingredient/<id>",methods=["GET"])
 def get_alcohol_by_ingredient_function(id):
 	response = get_alcohol_by_ingredient(id)
 	response = jsonify(response)

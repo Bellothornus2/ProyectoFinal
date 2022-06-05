@@ -37,7 +37,9 @@ def get_all_review():
 			"user_rating":item.user_rating,
 			"message":item.message,
 			"alcohol_id":item.alcohol_id.id,
-			"order_id":item.order_id.id
+			"order_id":item.order_id.id,
+			"user_name":item.user_id.name,
+			"alcohol_name":item.alcohol_id.name
 		})
 	db.close()
 	return data

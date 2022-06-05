@@ -36,8 +36,11 @@ def get_all_order():
 			"address_send":item.address_send_id.id,
 			"address_bill":item.address_bill_id.id,
 			"credit_card":item.credit_card_id.id,
-			"date_srt":item.date_str,
-			"total_amount":item.total_amount
+			"date_str":item.date_str,
+			"total_amount":item.total_amount,
+			"user_name":item.user_id.name,
+			"address_send_name":item.address_send_id.street,
+			"address_bill_name":item.address_bill_id.street
 		})
 	db.close()
 	return data

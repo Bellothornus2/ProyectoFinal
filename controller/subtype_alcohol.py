@@ -3,6 +3,7 @@ from services.subtype_alcohol import (
 	get_subtype_alcohol_id,
 	get_all_subtype_alcohol,
 	get_subtype_alcohol_last_id,
+	get_subtype_alcohol_by_type_alcohol,
 	create_subtype_alcohol,
 	update_subtype_alcohol,
 	delete_subtype_alcohol
@@ -10,6 +11,7 @@ from services.subtype_alcohol import (
 
 get_subtype_alcohol_blueprint = Blueprint("get_subtype_alcohol", __name__)
 get_all_subtype_alcohol_blueprint = Blueprint("get_all_subtype_alcohol", __name__)
+get_subtype_alcohol_by_type_alcohol_blueprint = Blueprint("get_subtype_alcohol_by_type_alcohol",__name__)
 create_subtype_alcohol_blueprint = Blueprint("create_subtype_alcohol", __name__)
 update_subtype_alcohol_blueprint = Blueprint("update_subtype_alcohol", __name__)
 delete_subtype_alcohol_blueprint = Blueprint("delete_subtype_alcohol", __name__)
@@ -23,6 +25,12 @@ def get_subtype_alcohol_function(id):
 @get_all_subtype_alcohol_blueprint.route("/subtype_alcohol",methods=["GET"])
 def get_all_subtype_alcohol_function():
 	response = get_all_subtype_alcohol()
+	response = jsonify(response)
+	return response
+
+@get_subtype_alcohol_by_type_alcohol_blueprint.route("/subtype_alcohol/by/type_alcohol/<type_alcohol_id>",methods=["GET"])
+def get_subtype_alcohol_by_type_alcohol_function(type_alcohol_id):
+	response = get_subtype_alcohol_by_type_alcohol(type_alcohol_id)
 	response = jsonify(response)
 	return response
 

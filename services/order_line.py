@@ -36,7 +36,8 @@ def get_all_order_line():
 			"price":item.price,
 			"discount":item.discount,
 			"total":item.total,
-			"order_id":item.order_id.id
+			"order_id":item.order_id.id,
+			"alcohol_name":item.alcohol_id.name
 		})
 	db.close()
 	return data

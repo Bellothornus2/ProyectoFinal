@@ -4,7 +4,11 @@ from services.alcohol import (
 	get_all_alcohol,
 	get_alcohol_last_id,
 	get_alcohol_by_type_alcohol,
+	get_alcohol_by_type_alcohol_human_readable,
 	get_alcohol_by_subtype_alcohol,
+	get_alcohol_by_subtype_alcohol_human_readable,
+	get_alcohol_human_readable,
+	get_all_alcohol_human_readable,
 	create_alcohol,
 	update_alcohol,
 	delete_alcohol
@@ -13,7 +17,11 @@ from services.alcohol import (
 get_alcohol_blueprint = Blueprint("get_alcohol", __name__)
 get_all_alcohol_blueprint = Blueprint("get_all_alcohol", __name__)
 get_alcohol_by_type_alcohol_blueprint = Blueprint("get_alcohol_by_type_alcohol",__name__)
+get_alcohol_by_type_alcohol_human_readable_blueprint = Blueprint("get_alcohol_by_type_alcohol_human_readable",__name__)
 get_alcohol_by_subtype_alcohol_blueprint = Blueprint("get_alcohol_by_subtype_alcohol",__name__)
+get_alcohol_by_subtype_alcohol_human_readable_blueprint = Blueprint("get_alcohol_by_subtype_alcohol_human_readable",__name__)
+get_alcohol_human_readable_blueprint = Blueprint("get_alcohol_human_readable",__name__)
+get_all_alcohol_human_readable_blueprint = Blueprint("get_all_alcohol_human_readable",__name__)
 create_alcohol_blueprint = Blueprint("create_alcohol", __name__)
 update_alcohol_blueprint = Blueprint("update_alcohol", __name__)
 delete_alcohol_blueprint = Blueprint("delete_alcohol", __name__)
@@ -37,9 +45,39 @@ def get_alcohol_by_type_alcohol_function(type_alcohol_id):
 	response = jsonify(response)
 	return response
 
+@get_alcohol_by_type_alcohol_human_readable_blueprint.route("/alcohol/by/type_alcohol/<type_alcohol_id>/human",methods=["GET"])
+def get_alcohol_by_type_alcohol_human_readable_function(type_alcohol_id):
+	response = get_alcohol_by_type_alcohol_human_readable(type_alcohol_id)
+	response = jsonify(response)
+	return response
+
 @get_alcohol_by_subtype_alcohol_blueprint.route("/alcohol/by/subtype_alcohol/<subtype_alcohol_id>",methods=["GET"])
 def get_alcohol_by_subtype_alcohol_function(subtype_alcohol_id):
 	response = get_alcohol_by_subtype_alcohol(subtype_alcohol_id)
+	response = jsonify(response)
+	return response
+
+@get_alcohol_by_subtype_alcohol_human_readable_blueprint.route("/alcohol/by/subtype_alcohol/<subtype_alcohol_id>/human",methods=["GET"])
+def get_alcohol_by_subtype_alcohol_human_readable_function(subtype_alcohol_id):
+	response = get_alcohol_by_subtype_alcohol_human_readable(subtype_alcohol_id)
+	response = jsonify(response)
+	return response
+
+@get_all_alcohol_human_readable_blueprint.route("/alcohol/human",methods=["GET"])
+def get_all_alcohol_human_readable_function():
+	response = get_all_alcohol_human_readable()
+	response = jsonify(response)
+	return response
+
+@get_all_alcohol_human_readable_blueprint.route("/alcohol/human/",methods=["GET"])
+def get_all_alcohol_human_readable_function2():
+	response = get_all_alcohol_human_readable()
+	response = jsonify(response)
+	return response
+
+@get_alcohol_human_readable_blueprint.route("/alcohol/human/<alcohol_id>",methods=["GET"])
+def get_alcohol_human_readable_function(alcohol_id):
+	response = get_alcohol_human_readable(alcohol_id)
 	response = jsonify(response)
 	return response
 
